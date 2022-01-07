@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "experimentalDecorators": true,
+    "module": "esNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "types": [
+      "@types/node",
+      "@types/jest"
+    ]
+  },
+  "references": [
+    {
+      "path": "web"
+    },
+    {
+      "path": "core"
+    },
+    {
+      "path": "functions"
+    }
+  ],
+  "include": [
+    "core/src/**/*",
+    "core/tests/**/*",
+    "web/src/**/*",
+    "web/tests/**/*",
+    "functions/src/**/*",
+    "functions/tests/**/*"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "docker",
+    "rules",
+    ".github"
+  ],
+  "compileOnSave": true
+}

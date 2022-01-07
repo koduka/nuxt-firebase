@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  node:
+    build: ./docker/node
+    tty: true
+    volumes:
+      - ./:/node
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    environment:
+      - FIREBASE_EMULATOR_HOST=localhost
+      - FIREBASE_AUTH_PORT=9099
+      - FIREBASE_STORAGE_PORT=9199
+      - FIREBASE_FIRESTORE_PORT=8080
+    networks:
+      - default
+  firebase:
+    build: ./docker/firebase
+    command: emulators:start
+    volumes:
+      - ./core:/firebase/core
+      - ./functions:/firebase/functions
+      - ./rules:/firebase/rules
+      - ./.firebaserc:/firebase/.firebaserc
+      - ./firebase.json:/firebase/firebase.json
+      - ./firestore.indexes.json:/firebase/firestore.indexes.json
+      - ./docker/firebase/emulators:/root/.cache/firebase/emulators
+    ports:
+      - 4000:4000
+      - 8080:8080
+      - 9099:9099
+      - 9199:9199
+    networks:
+      - default
+  sendgrid:
+    image: ghashange/sendgrid-mock:1.7.2
+    ports:
+      - 3443:443
+      - 3080:80
+      - 8025:3000
+    environment:
+      - API_KEY=SG.sendgrid
+    networks:
+      - default
+
+networks:
+  default:

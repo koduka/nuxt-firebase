@@ -1,0 +1,33 @@
+{
+  "name": "@app/nuxt-firebase",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "./web",
+    "./core",
+    "./functions"
+  ],
+  "scripts": {
+    "ts:build": "tsc --build",
+    "ts:clean": "tsc --build --clean",
+    "postinstall": "update-ts-references"
+  },
+  "dependencies": {
+    "core-js": "^3.20.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.5",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^27.4.5",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2",
+    "update-ts-references": "^2.4.1"
+  }
+}
